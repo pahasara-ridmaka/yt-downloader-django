@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Nav bar -->
+  <div class="h-[10vh] flex justify-start">
+    <a href="{% url 'home' %}">
+      <div class="text-white flex justify-center items-center space-x-2 p-4">
+        <i class="fa-solid fa-arrow-left rounded-full bg-white text-black shadow-md h-8 w-8 p-2 flex justify-center items-center"></i>
+        <p>Go back</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- content -->
+  <section class="h-[70vh] flex flex-col justify-center">
+    <div class="text-center text-white font-semibold text-2xl flex items-center justify-center">
+      <div class="w-1/3 flex-wrap-reverse">
+        <marquee behavior="infinite" direction="">
+          <h2><a href="{{ ytURL }}">{{ title }}</a></h2>
+        </marquee>
+      </div>
+    </div>
+    <div class="w-full items-center flex justify-center p-5">
+      <img src="{{ thumbnail_URL }}" alt="" class="h-64 rounded-xl shadow-md hover:shadow-xl hover:blur-0.9" />
+    </div>
+
+    <form action="{% url 'download_confirm' %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="ytURL" value="{{ ytURL }}" />
+      <input type="hidden" name="ytRes" value="{{ ytRes }}" />
+      <div class="flex justify-center space-x-3">
+        <input type="submit" value="Download Video" class="hover:animate-bounce block rounded-md border-0 bg-white px-5 py-2 h-12 font-semibold shadow-sm hover:shadow-md focus:ring-1 focus:ring-inset focus:text-gray-900 focus:ring-gray-900 text-indigo-600" />
+        <button class="hover:animate-bounce block rounded-md border-0 bg-white px-5 py-2 h-12 font-semibold shadow-sm hover:shadow-md focus:ring-1 focus:ring-inset focus:text-gray-900 focus:ring-gray-900 text-indigo-600"><a href="https://i.ytimg.com/vi/oY5xMLUjqaU/hq720.jpg?sqp=-oaymwEXCNUGEOADIAQqCwjVARCqCBh4INgESFo&amp;rs=AOn4CLDJ6Bvrq06AtnHf_qJTD1sc2BeCoA">Save Thumbnail</a></button>
+      </div>
+    </form>
+  </section>
+  {% include 'footer.html' %}
+{% endblock %}

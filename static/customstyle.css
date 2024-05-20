@@ -1,0 +1,31 @@
+.custom-option:hover{
+    background-color: blueviolet;
+    color: white;
+}
+
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    padding-right: 1rem; /* Adjust as needed */
+}
+
+.custom-select::-ms-expand {
+    display: none;
+}
+
+.custom-select-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select-container::after {
+    content: "▼"; /* or any other symbol, or even an empty string */
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}

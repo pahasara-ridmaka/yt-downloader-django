@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  {% comment %}HEADER{% endcomment %}
+  <section>
+    <div class="flex flex-col items-center h-[80vh] w-screen justify-center">
+      <div class="mb-4 w-1/3 text-center">
+        <i class="fa-solid fa-download fa-5x text-white mb-5"></i>
+        <h1 class="text-[3rem] mb-4 md:drop-shadow-md text-white font-bold">Download Your Favorite YouTube Videos Easily</h1>
+        <p class="text-white font-thin mb-5">Enter the URL of the YouTube video you wish to download in the box below and enjoy your content offline anytime, anywhere. Fast, free, and user-friendly!</p>
+      </div>
+
+      {% comment %} <form action="" class="w-full">
+        <div class="flex items-center justify-center space-x-3">
+          <input id="sample" autocomplete="given-name" placeholder="https://www.youtube.com/watch?v=uJp4PaDkux0" type="text" class="outline-none w-1/3 h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+          <label for="res">Choose Resolution:</label>
+          <select name="" id="res" class="shadow-sm hover:shadow-md outline-none h-12 rounded-md border border-purple-700 text-sm px-5 font-semibold text-white bg-violet-500">
+            <option value="720p" class="custom-option">720p</option>
+            <option value="480p" class="custom-option">480p</option>
+            <option value="360p">360p</option>
+          </select>
+
+          <input type="submit" value="Download" class="rounded-md border-0 bg-white px-5 py-2 h-12 font-semibold shadow-sm hover:shadow-md focus:ring-1 focus:ring-inset focus:text-gray-900 focus:ring-gray-900 text-indigo-600" />
+        </div>
+      </form> {% endcomment %}
+
+      <form method="post" class="w-full flex items-center justify-center space-x-4">
+        {% csrf_token %}
+
+        {{ form.url }}
+        <div class="text-white">{{ form.res.label_tag }}</div>
+        {{ form.res }}
+
+        <div class="">
+          <input type="submit" value="Download" class="block rounded-md border-0 bg-white px-5 py-2 h-12 font-semibold shadow-sm hover:shadow-md focus:ring-1 focus:ring-inset focus:text-gray-900 focus:ring-gray-900 text-indigo-600" />
+        </div>
+      </form>
+    </div>
+
+    {% include 'footer.html' %}
+  </section>
+{% endblock %}
